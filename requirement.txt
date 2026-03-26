@@ -1,0 +1,7 @@
+streamlit
+ollama
+langchain
+langchain-community
+chromadb
+pysqlite3-binary
+python-dotenv
