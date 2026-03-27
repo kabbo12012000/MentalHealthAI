@@ -4,3 +4,5 @@ ollama
 chromadb
 streamlit
 sqlite3
+pysqlite3-binary
+python-dotenv
