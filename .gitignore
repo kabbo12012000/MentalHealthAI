@@ -1,4 +1,66 @@
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database & Cache
+*.db
+*.sqlite
+*.sqlite3
+*.chroma.sqlite3
+db/
+chat_history.db
+
+# Chroma database
+3e6a7493-503b-441a-98d7-9db071ab1f7f/
+f1ce297a-a5a4-431b-8af8-66edb4a6ddea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project specific
+*.mp4
+Untitled Project.mp4
 *.pyc
 *.pyo
 *.pyd
