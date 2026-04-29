@@ -2,6 +2,8 @@
 
 An AI-powered mental health support application built with LangChain, Ollama, and Streamlit.
 
+[![Deploy on Render](https://img.shields.io/badge/Render-Deploy-blue?logo=render)](https://render.com)
+
 ## 📋 Features
 
 - Mental health support chatbot powered by Ollama/LLM
