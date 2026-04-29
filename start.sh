@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-export OLLAMA_HOST=0.0.0.0:11434
+export OLLAMA_HOST=127.0.0.1:11434
 
 ollama serve > /tmp/ollama.log 2>&1 &
 
