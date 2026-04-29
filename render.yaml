@@ -6,9 +6,11 @@ services:
     autoDeploy: true
     envVars:
       - key: OLLAMA_MODEL
-        value: llama3.2:3b
+        value: qwen2.5:0.5b
       - key: OLLAMA_EMBED_MODEL
-        value: nomic-embed-text
+        value: all-minilm
+      - key: ENABLE_RAG
+        value: "false"
       - key: OLLAMA_BASE_URL
         value: http://localhost:11434
       - key: CHROMA_DB_PATH

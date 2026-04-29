@@ -20,6 +20,7 @@ CHROMA_DB_PATH = os.getenv("CHROMA_DB_PATH", str(ROOT_DIR / "db"))
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
 OLLAMA_EMBED_MODEL = os.getenv("OLLAMA_EMBED_MODEL", "nomic-embed-text")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+ENABLE_RAG = os.getenv("ENABLE_RAG", "true").lower() in {"1", "true", "yes"}
 
 client = ollama.Client(host=OLLAMA_BASE_URL)
 
@@ -27,9 +28,13 @@ data = load_mental_health_data(DATA_PATH) or {"mental_health_resources": {"major
 documents = format_hospital_info(data["mental_health_resources"].get("major_hospitals", []))
 
 vector_db = None
-if documents:
-    embeddings = OllamaEmbeddings(model=OLLAMA_EMBED_MODEL, base_url=OLLAMA_BASE_URL)
-    vector_db = Chroma.from_texts(documents, embeddings, persist_directory=CHROMA_DB_PATH)
+if ENABLE_RAG and documents:
+    try:
+        embeddings = OllamaEmbeddings(model=OLLAMA_EMBED_MODEL, base_url=OLLAMA_BASE_URL)
+        vector_db = Chroma.from_texts(documents, embeddings, persist_directory=CHROMA_DB_PATH)
+    except Exception as exc:
+        # Fallback to non-RAG mode if embeddings cannot load (e.g., low memory).
+        print(f"RAG disabled due to embedding error: {exc}")
 
 
 def classify_intent(query):
